@@ -92,8 +92,7 @@ class RenameManeuver(DefaultManeuver):
 
         try:
             progress = await self._media_message.reply(Trans.DL_RENAMING_FILE, quote=True, reply_markup=markup)
-            dl_path = os.path.join("downloads/{}/".format(str(time.time()).replace(".","")))
-            os.makedirs(dl_path, exist_ok=True)
+            dl_path = "./bot/DOWNLOADS" + "/" + str(cmd_message.chat.id) + "/"
             dl_path = await self._media_message.download(
                 file_name=dl_path,
                 progress=progress_for_pyrogram, 
